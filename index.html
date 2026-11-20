@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TREXO</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0f0f0f;color:white;font-family:Arial}
+header{padding:18px;background:#181818}
+.logo{font-size:28px;font-weight:bold;color:#ff3030}
+.search{margin-top:15px;display:flex;gap:8px}
+input{flex:1;padding:12px;border-radius:25px;background:#222;color:white;border:1px solid #444}
+button{padding:12px 18px;border:0;border-radius:25px;background:#ff3030;color:white}
+nav{display:flex;gap:10px;padding:15px;overflow:auto}
+nav button{background:#292929;white-space:nowrap}
+h2{margin:15px}
+.videos{display:grid;grid-template-columns:1fr;gap:18px;padding:12px}
+.card{background:#1b1b1b;border-radius:12px;overflow:hidden}
+.thumb{height:190px;background:linear-gradient(135deg,#222,#651010);display:flex;align-items:center;justify-content:center;font-size:45px}
+.info{padding:13px}
+.info p{color:#aaa;margin-top:7px;font-size:13px}
+footer{text-align:center;padding:30px;color:#888}
+@media(min-width:700px){.videos{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.videos{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">▶ TREXO</div>
+<div class="search">
+<input id="search" placeholder="Search videos...">
+<button onclick="search()">Search</button>
+</div>
+</header>
+
+<nav>
+<button onclick="filter('All')">All</button>
+<button onclick="filter('Music')">Music</button>
+<button onclick="filter('Gaming')">Gaming</button>
+<button onclick="filter('Education')">Education</button>
+<button onclick="filter('Entertainment')">Entertainment</button>
+</nav>
+
+<h2>Explore Videos</h2>
+
+<div class="videos" id="videos">
+
+<div class="card" data-cat="Music">
+<div class="thumb">▶</div>
+<div class="info"><h3>Music Videos</h3><p>TREXO · Music</p></div>
+</div>
+
+<div class="card" data-cat="Gaming">
+<div class="thumb">▶</div>
+<div class="info"><h3>Gaming Videos</h3><p>TREXO · Gaming</p></div>
+</div>
+
+<div class="card" data-cat="Education">
+<div class="thumb">▶</div>
+<div class="info"><h3>Learning Videos</h3><p>TREXO · Education</p></div>
+</div>
+
+<div class="card" data-cat="Entertainment">
+<div class="thumb">▶</div>
+<div class="info"><h3>Entertainment</h3><p>TREXO · Entertainment</p></div>
+</div>
+
+<div class="card" data-cat="Music">
+<div class="thumb">▶</div>
+<div class="info"><h3>Trending Videos</h3><p>TREXO · Trending</p></div>
+</div>
+
+</div>
+
+<footer>© 2026 TREXO</footer>
+
+<script>
+function search(){
+let q=document.getElementById("search").value.toLowerCase();
+document.querySelectorAll(".card").forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(q)?"":"none";
+});
+}
+function filter(cat){
+document.querySelectorAll(".card").forEach(c=>{
+c.style.display=cat==="All"||c.dataset.cat===cat?"":"none";
+});
+}
+</script>
+
+</body>
+  </html>
